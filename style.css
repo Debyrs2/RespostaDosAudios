@@ -1,0 +1,260 @@
+:root {
+    --bg-1: #0f1724;
+    --bg-2: #2b1b3a;
+    --card: rgba(255, 255, 255, 0.04);
+    --glass: rgba(255, 255, 255, 0.06);
+    --accent: #ff5c8a;
+    --muted: #a7b0c0;
+    --text: #e6eef8;
+    --max-width: 820px;
+}
+
+* {
+    box-sizing: border-box
+}
+
+html,
+body {
+    height: 100%
+}
+
+body {
+    margin: 0;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    background: linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+}
+
+.page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column
+}
+
+.top {
+    padding: 28px 16px 0
+}
+
+.brand {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 16px
+}
+
+.brand-title {
+    margin: 0;
+    font-size: 1.4rem;
+    letter-spacing: 0.2px
+}
+
+.subtitle {
+    margin: 4px 0 0;
+    color: var(--muted);
+    font-size: 0.95rem
+}
+
+.container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 28px 16px
+}
+
+.card {
+    width: 100%;
+    max-width: var(--max-width);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+    border-radius: 16px;
+    padding: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 8px 30px rgba(2, 6, 23, 0.6)
+}
+
+.card-title {
+    margin: 0 0 8px;
+    font-size: 1.25rem
+}
+
+.meta {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 12px
+}
+
+.content p {
+    margin: 0 0 12px;
+    color: var(--text)
+}
+
+.content em {
+    font-style: italic;
+    color: #ffdbe8
+}
+
+blockquote.highlight {
+    margin: 16px 0;
+    padding: 12px 16px;
+    border-left: 4px solid var(--accent);
+    background: linear-gradient(90deg, rgba(255, 92, 138, 0.04), transparent);
+    color: var(--text);
+    border-radius: 8px
+}
+
+.strong-lead {
+    font-weight: 700;
+    font-size: 1rem;
+    margin: 12px 0;
+    color: #fff
+}
+
+.section-title {
+    margin: 18px 0 8px;
+    font-size: 1.05rem;
+    color: var(--accent)
+}
+
+.personal p {
+    margin: 0 0 12px
+}
+
+.love {
+    margin-top: 14px;
+    font-weight: 600;
+    color: #ffd1e1;
+    font-size: 1.05rem
+}
+
+.foot {
+    padding: 20px 0;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.9rem
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    margin-top: -60px;
+    opacity: 0.08
+}
+
+
+@media (min-width:600px) {
+    .brand-title {
+        font-size: 1.6rem
+    }
+
+    .card {
+        padding: 28px
+    }
+
+    .card-title {
+        font-size: 1.45rem
+    }
+}
+
+@media (min-width:1000px) {
+    body {
+        background: linear-gradient(180deg, #081020, #1b0620)
+    }
+
+    .container {
+        padding: 40px
+    }
+
+    .card {
+        padding: 36px;
+        border-radius: 20px
+    }
+}
+
+
+a {
+    color: var(--accent)
+}
+
+strong {
+    color: #fff
+}
+
+
+.muted {
+    color: var(--muted)
+}
+
+
+.envelope {
+    position: fixed;
+    inset: 0;
+    background: #0b0b12;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: sumirEnvelope 1s ease forwards;
+    animation-delay: 4.5s;
+}
+
+.envelope-back {
+    position: absolute;
+    width: 90%;
+    max-width: 420px;
+    height: 260px;
+    background: linear-gradient(135deg, #2b1b3a, #120817);
+    border-radius: 12px;
+}
+
+.envelope-flap {
+    position: absolute;
+    width: 90%;
+    max-width: 420px;
+    height: 130px;
+    background: #ff5c8a;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    transform-origin: top;
+    animation: abrirFlap 2s ease forwards;
+    animation-delay: 1s;
+}
+
+.letter {
+    position: absolute;
+    width: 86%;
+    max-width: 400px;
+    height: 240px;
+    background: white;
+    border-radius: 10px;
+    transform: translateY(40px);
+    opacity: 0;
+    animation: subirCarta 2s ease forwards;
+    animation-delay: 2.5s;
+    overflow: auto;
+}
+
+@keyframes abrirFlap {
+    to {
+        transform: rotateX(180deg);
+    }
+}
+
+@keyframes subirCarta {
+    to {
+        transform: translateY(-40px);
+        opacity: 1;
+    }
+}
+
+@keyframes sumirEnvelope {
+    to {
+        opacity: 0;
+        pointer-events: none;
+    }
+}
